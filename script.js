@@ -14,10 +14,22 @@ const atualizarContagem = () => {
     let minutos = Math.floor(diferencaDasDatasEmMilissegundos / 1000 / 60) % 60;
     let segundos = Math.floor(diferencaDasDatasEmMilissegundos / 1000) % 60;
 
-    diasText.textContent = dias;
-    horasText.textContent = horas;
-    minutosText.textContent = minutos;
-    segundosText.textContent = segundos;
+    if (horarioAtual <= dataDoEvento) {
+        let dias = Math.floor(diferencaDasDatasEmMilissegundos / 1000 / 60 / 60 / 24);
+        let horas = Math.floor(diferencaDasDatasEmMilissegundos / 1000 / 60 / 60) % 24;
+        let minutos = Math.floor(diferencaDasDatasEmMilissegundos / 1000 / 60) % 60;
+        let segundos = Math.floor(diferencaDasDatasEmMilissegundos / 1000) % 60;
+
+        diasText.textContent = dias;
+        horasText.textContent = horas;
+        minutosText.textContent = minutos;
+        segundosText.textContent = segundos;
+    } else {
+        diasText.textContent = 0;
+        horasText.textContent = 0;
+        minutosText.textContent = 0;
+        segundosText.textContent = 0;
+    }
 };
 
 setInterval(atualizarContagem, 1000);
